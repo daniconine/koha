@@ -1,0 +1,31 @@
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-20-04-es
+
+****** Instalacion Certbot
+1 sudo apt install certbot python3-certbot-apache
+
+**** Configuracion de Koha apache2 .conf
+2 sudo nano /etc/apache2/sites-available/biblioteca.conf
+
+/etc/apache2/sites-available/your_domain.conf
+...
+ServerName biblioteca.gerensconsultoria.pe
+ServerAlias www.biblioteca.gerensconsultoria.pe
+
+Verficación de sintaxis
+3 sudo apache2ctl configtest
+4 sudo systemctl reload apache2
+
+***+ configurar los acceso al firewall
+5 sudo ufw allow 'Apache Full'
+6 sudo ufw delete allow 'Apache'
+
+***** Obtener el ertificado SSL
+7 sudo certbot --apache
+  correo: soporte@gerens.edu.pe
+Colcoar el subdomoinio o dominio puesto en 2
+
+****** Renovación CErtificado SSL
+8 sudo systemctl status certbot.timer
+
+Renovar SSL
+9 sudo certbot renew --dry-run
