@@ -1,0 +1,174 @@
+https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension-ubuntu-20-04
+
+*** Enabling Necessary Apache Modules
+1 sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
+2 sudo systemctl restart apache2
+
+***** Modifying the Default Configuration to Enable Reverse Proxy
+
+3 sudo nano /etc/apache2/sites-available/000-default.conf
+
+Usaremos el de koha 
+4 sudo nano /etc/apache2/sites-available/biblioteca.conf
+
+Editamos 
+  <VirtualHost *:80>
+    ProxyPreserveHost On
+
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+</VirtualHost>
+
+  History
+1  clear
+    2  apt-get update;
+    3  apt-get -y install sudo wget gnupg2;
+    4  wget -qO - https://debian.koha-community.org/koha/gpg.asc | gpg --dearmor -o /usr/share/keyrings/koha-keyring.gpg;
+    5  echo deb [signed-by=/usr/share/keyrings/koha-keyring.gpg] https://debian.koha-community.org/koha stable main | tee /etc/apt/sources.list.d/koha.list
+    6  nano /etc/apt/sources.list.d/koha.list
+    7  apt-get update;
+    8  apt-get install koha-common
+    9  nano /etc/koha/koha-sites.conf
+   10  apt-get install mysql-server
+   11  a2enmod rewrite;
+   12  a2enmod cgi;
+   13  service apache2 restart
+   14  koha-create --create-db biblioteca
+   15  nano /etc/apache2/ports.conf
+   16  service apache2 restart
+   17  a2dissite 000-default;
+   18  a2enmod deflate;
+   19  a2ensite biblioteca
+   20  service apache2 restart
+   21  koha-passwd biblioteca
+   22  koha-translate --install es-ES
+   23  sudo apt install certbot python3-certbot-apache
+   24  cd /etc
+   25  cd apache2/
+   26  ls
+   27  cd sites-available/
+   28  ls
+   29  nano biblioteca.conf 
+   30  sudo apache2ctl configtest
+   31  nano biblioteca.conf 
+   32  sudo apache2ctl configtest
+   33  nano biblioteca.conf 
+   34  sudo apache2ctl configtest
+   35  sudo systemctl reload apache2
+   36  sudo ufw status
+   37  sudo ufw enable
+   38  sudo ufw app list
+   39  sudo ufw allow OpenSSH
+   40  sudo ufw allow ssh
+   41  sudo ufw allow 22
+   42  sudo ufw allow 2222
+   43  sudo ufw show added
+   44  sudo ufw enable
+   45  sudo ufw allow 'Apache Full'
+   46  sudo ufw delete allow 'Apache'
+   47  sudo ufw status
+   48  sudo certbot --apache
+   49  sudo systemctl status certbot.timer
+   50  sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
+   51  sudo systemctl restart apache2
+   52  sudo apt update
+   53  sudo apt install python3-pip
+   54  sudo pip3 install Flask
+   55  nano ~/backend1.py
+   56  cp ~/backend1.py ~/backend2.py
+   57  nano ~/backend2.py
+   58  cd /etc
+   59  cd koha/
+   60  ls
+   61  cd sites/
+   62  ls
+   63  cd biblioteca/
+   64  ls
+   65  cd ..
+   66  nano koha-sites.conf 
+   67  nano /etc/apache2/ports.conf
+   68  systemctl restart koha-common
+   69  systemctl status koha-common
+   70  sudo ufw allow 8001/tcp
+
+/etc/apache2/biblioteca.conf
+     -_____________________________________________________________________-
+      Define instance "biblioteca"
+  </IfVersion>
+   Include /etc/koha/apache-shared.conf
+#  Include /etc/koha/apache-shared-disable.conf
+#  Include /etc/koha/apache-shared-opac-plack.conf
+   Include /etc/koha/apache-shared-opac.conf
+
+   ServerName biblioteca.gerensconsultoria.pe
+   ServerAlias biblioteca.gerensconsultoria.pe
+   SetEnv KOHA_CONF "/etc/koha/sites/biblioteca/koha-conf.xml"
+   AssignUserID biblioteca-koha biblioteca-koha
+
+   ErrorLog    /var/log/koha/biblioteca/opac-error.log
+#  TransferLog /var/log/koha/biblioteca/opac-access.log
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =biblioteca.gerensconsultoria.pe
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+# Intranet
+<VirtualHost *:8001>
+  <IfVersion >= 2.4>
+   Define instance "biblioteca"
+  </IfVersion>
+   Include /etc/koha/apache-shared.conf
+#  Include /etc/koha/apache-shared-disable.conf
+#  Include /etc/koha/apache-shared-intranet-plack.conf
+   Include /etc/koha/apache-shared-intranet.conf
+
+   ServerName 8000biblioteca-intra.myDNSname.org
+   SetEnv KOHA_CONF "/etc/koha/sites/biblioteca/koha-conf.xml"
+   AssignUserID biblioteca-koha biblioteca-koha
+
+   ErrorLog    /var/log/koha/biblioteca/intranet-error.log
+#  TransferLog /var/log/koha/biblioteca/intranet-access.log
+
+  ___________________________________________________________________________________________
+biblitoeca-ssl.conf
+
+   Define instance "biblioteca"
+  </IfVersion>
+   Include /etc/koha/apache-shared.conf
+#  Include /etc/koha/apache-shared-disable.conf
+#  Include /etc/koha/apache-shared-opac-plack.conf
+   Include /etc/koha/apache-shared-opac.conf
+
+   ServerName biblioteca.gerensconsultoria.pe
+   ServerAlias biblioteca.gerensconsultoria.pe
+   SetEnv KOHA_CONF "/etc/koha/sites/biblioteca/koha-conf.xml"
+   AssignUserID biblioteca-koha biblioteca-koha
+
+   ErrorLog    /var/log/koha/biblioteca/opac-error.log
+#  TransferLog /var/log/koha/biblioteca/opac-access.log
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =biblioteca.gerensconsultoria.pe
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+# Intranet
+<VirtualHost *:8001>
+  <IfVersion >= 2.4>
+   Define instance "biblioteca"
+  </IfVersion>
+   Include /etc/koha/apache-shared.conf
+#  Include /etc/koha/apache-shared-disable.conf
+#  Include /etc/koha/apache-shared-intranet-plack.conf
+   Include /etc/koha/apache-shared-intranet.conf
+
+   ServerName 8000biblioteca-intra.myDNSname.org
+   SetEnv KOHA_CONF "/etc/koha/sites/biblioteca/koha-conf.xml"
+   AssignUserID biblioteca-koha biblioteca-koha
+
+   ErrorLog    /var/log/koha/biblioteca/intranet-error.log
+#  TransferLog /var/log/koha/biblioteca/intranet-access.log
+
+--_______________________________________________________________
+
+
+    
