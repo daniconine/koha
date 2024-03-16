@@ -1,0 +1,78 @@
+# instalacion del servicio KOHA
+  GUÍA PARA INSTALAR KOHA 23.11 EN UBUNTU 22.04 Adapatado a Produccion
+
+ apt-get update
+ apt-get upgrade
+ 
+******* Configurar la fuente de origen los paquetes, ingresando los siguientes comandos:
+4 apt-get -y install sudo wget gnupg2;
+5 wget -qO - https://debian.koha-community.org/koha/gpg.asc | gpg --dearmor -o /usr/share/keyrings/koha-keyring.gpg;
+6 echo deb [signed-by=/usr/share/keyrings/koha-keyring.gpg] https://debian.koha-community.org/koha stable main | tee /etc/apt/sources.list.d/koha.list
+
+Para comprobar si la configuración se realizó correctamente, ingresar al archivo koha.list utilizando el editor de texto “nano”:
+7 nano /etc/apt/sources.list.d/koha.list
+Si todo está correcto, el documento debería contener lo siguiente:
+deb [signed-by=/usr/share/keyrings/koha-keyring.gpg] https://debian.koha-community.org/koha stable main
+Existe la version old, que es la version anterior de KOHA que generalmente ya esta sin aprches y sin soporte
+
+Actualizar los paquetes del sistema, comprobando que ahora se incluya el
+paquete para koha-common:
+8 apt-get update;
+
+*********Instalar Koha utilizando el siguiente comando:
+9 apt-get install koha-common
+Configurar los puertos de conexión a Intranet y al OPAC de Koha. Para ello, ingresar al archivo koha-sites.conf utilizando el editor de texto “nano”:
+10 nano /etc/koha/koha-sites.conf
+Una vez dentro, buscar las líneas INTRAPORT y OPACPORT para realizar los siguientes cambios:
+INTRAPORT= "8001"
+OPACPORT= "80"
+
+*********** Instalar el servidor MySQL usando el comando:
+11 apt-get install mysql-server
+Por defecto no isnbtala medidas de seguridad, hace falta aconfigurar las protecciones de acceso
+
+****** Habilitar módulos en el servidor web Apache 2 con los comandos:
+12 a2enmod rewrite;
+13 a2enmod cgi;
+14 service apache2 restart
+Falta configurar el proxy para -admin
+
+Crear una instancia de Koha, usando el nombre de nuestra biblioteca:
+15 koha-create --create-db biblioteca
+
+Añadir puertos asignados ahora en Apache 2, editando el archivo ports.conf con nano:
+16 nano /etc/apache2/ports.conf
+Una vez dentro, incluir las siguientes líneas al archivo:
+Listen 80
+Listen 8001
+
+Habilitar nuevos módulos:
+17 service apache2 restart
+18 a2dissite 000-default;
+19 a2enmod deflate;
+20 a2ensite biblioteca
+21 service apache2 restart
+
+Generar una contraseña para el superusuario de Koha, usando el siguiente comando:
+22 koha-passwd biblioteca
+
+Instalar el paquete de idioma Español para Koha, ingresando el siguiente comando:
+23 koha-translate --install es-ES
+
+  ************* HAbilitar plugin 
+  nano /etc/koha/koha-sites.conf
+  
+  El sistema de plugins tiene que ser activado por el administrador del sistema.
+Configuración
+Para configurar el sistema de plugins de Koha usted debe, primero, hacer algunos cambios en su instalación.
+  
+24 Cambie <enable_plugins>0</enable_plugins> a <enable_plugins>1</enable_plugins> en el archivo koha-conf.xml
+  
+Reiniciar su servidor web
+Una vez haya completado la instalación necesitará alterar su preferencia del sistema UseKohaPlugins. 
+  En la página de Herramientas usted verá la Herramienta plugins y en la página Informes usted verá los Plugins de Informes.
+
+  Final
+
+  Miscelaneos:
+Falta configurar SMTP, API , 
