@@ -1,0 +1,49 @@
+************
+  Habilitar Plugin
+
+  Quitar en <repos> ...quitar el restricted de 1 a 0
+
+**********
+
+  /*Hide Coultar logo small*/
+$("#logo").hide();
+
+
+/*Replace Library Catalog la palabara en la busqueda principal */
+$("select[name='idx']option:first").text('Keyword');
+
+/*Hide ocultar la columna derecha right navigation*/
+$('#login').hide();
+
+/*Remove no -image shadow*/
+$('.no-image').remove();
+
+
+***************
+Opacheader -->Tool >Additonal content>HTML Customi>New Entry
+
+<center>
+<img src="https://booksbythefoot.com/wp-content/uploads/2023/03/takeover-banner-768x315.jpg" />
+</center>
+
+
+**************
+
+
+Login apareance
+
+<head>
+<style>
+body {
+  background-image: url("https://www.gratistodo.com/wp-content/uploads/2021/10/fondos-de-colores-1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000000;
+  
+}
+</style>
+</head>
+
+<body >
+<center><img src="https://free-images.com/or/ea1f/unmsm_escudo_b_gif.jpg" height="150" width="120"><br><font color="black" size="5"> Bienvenidos</font></center> 
+  </body >
