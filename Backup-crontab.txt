@@ -1,0 +1,42 @@
+**************************
+
+#!/bin/bash
+mysqldump --user=root --password=ger20bib0140 koha_biblioteca> /home/dspace/backup/koha/archivos/koha_gerens.sql
+
+cp -r /var/spool/koha /home/dspace/backup/koha/archivos
+
+fecha=`date +%Y_%m_%d_%H_%M`
+archivo="koha_gerens_$fecha"
+
+tar -cvzpf /home/dspace/backup/koha/$archivo.tar.gz /home/dspace/backup/koha/archivos
+
+cd /home/dspace/backup/koha/archivos
+rm -r *
+
+find /home/dspace/backup/koha/* -type f -mtime +2 -exec rm {} \;
+
+
+
+************************
+
+
+
+
+***********************
+
+
+#!/bin/bash
+PGPASSWORD="bib0401tk" pg_dump -U dspace -h localhost dspace | gzip > /home/dspace/backup/dspace/dspace_$(date +%Y_%m_%d).sql.gz
+now=$(date +"%Y_%m_%d")
+tar -czvf  /home/dspace/backup/dspace/assetstore_$now.tar.gz /dspace/assetstore
+tar -czvf  /home/dspace/backup/dspace/log_$now.tar.gz /dspace/log
+tar -czvf  /home/dspace/backup/dspace/dspace.cfg.tar.gz /dspace/config/dspace.cfg
+tar -czvf  /home/dspace/backup/dspace/input-forms.xml.tar.gz /dspace/config/input-forms.xml
+tar -czvf  /home/dspace/backup/dspace/usage-statistics.cfg.tar.gz /dspace/config/modules/usage-statistics.cfg
+tar -czvf  /home/dspace/backup/dspace/oai.cfg.tar.gz /dspace/config/modules/oai.cfg
+tar -czvf  /home/dspace/backup/dspace/data_$now.tar.gz /dspace/solr/statistics/data/
+
+find /home/dspace/backup/dspace/* -type f -mtime +3 -exec rm {} \;
+
+
+
