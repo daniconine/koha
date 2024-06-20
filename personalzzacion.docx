@@ -4,7 +4,41 @@
   Quitar en <repos> ...quitar el restricted de 1 a 0
 
 **********
+/*boton primario*/
+.btn-primary {
+	color: #ffffff;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+	background-color: #F2F2EF !important;
+	background-image: linear-gradient(to bottom, #70B7E7, #3D7BE7) !important;
+}
+/* Replace logos */
 
+#logo {
+      background: rgba(0, 0, 0, 0) url("https://repositorio.gerens.edu.pe/themes/Mirage2/images/logo.png") no-repeat scroll 0 center;
+  	  float: left !important;
+      margin: 10px 10px 10px 20px;
+      padding: 0;
+      width: 250px;
+      height: 55px;
+      background-size: contain;
+}
+
+@media only screen and (max-width: 100px) {
+  #logo{
+    background: transparent url("https://repositorio.gerens.edu.pe/themes/Mirage2/images/logo.png");
+  }
+}
+
+
+body {
+    background-color: #ffffff;
+    font-family: same-serif;
+    font-size:14px;
+}
+
+
+
+*******************************
   /*Hide Coultar logo small*/
 $("#logo").hide();
 
