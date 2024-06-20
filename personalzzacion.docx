@@ -38,8 +38,117 @@ body {
     font-family: same-serif;
     font-size:14px;
 }
+********************************************
+
+opacheader
+https://as2.ftcdn.net/v2/jpg/06/79/36/87/1000_F_679368715_qXMX8qQ2a0dwSUA47FR02pkBYZsvbXJB.jpg
+ancho 360
+
+opacnav
+Campus Virtual
+Página Principal
+Programas
+Repositorio﻿
+
+opacmainuserblock
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #f5f9ff;
+            color: #3D7BE7;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0a0707 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 24px;
+        }
+        .main-content {
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #3D7BE7;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f5f2f2;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        a {
+            color: #0036d9;
+            text-decoration: none;
+        }
+        .contact {
+            margin-top: 20px;
+        }
+    </style>
+<header>
+<h1>Biblioteca Virtual: Escuela de Postgrado GĚRENS</h1>
+</header>
+<div class="container">
+<div class="main-content">
+<p>En la Biblioteca Virtual de GĚRENS, entendemos la importancia de contar con recursos acad&eacute;micos de alta calidad para apoyar tu desarrollo profesional y acad&eacute;mico. Nuestro sistema de biblioteca est&aacute; dise&ntilde;ado para proporcionarte acceso f&aacute;cil y r&aacute;pido a una amplia gama de recursos electr&oacute;nicos y f&iacute;sicos que te ayudar&aacute;n a alcanzar tus objetivos de investigaci&oacute;n y estudio.</p>
+<h2>&iquest;Qu&eacute; ofrecemos?</h2>
+<ul>
+<li><strong>Acceso a Bases de Datos Especializadas:</strong> Disponemos de suscripciones a las principales bases de datos acad&eacute;micas y profesionales, que incluyen art&iacute;culos de revistas, informes de investigaci&oacute;n, libros electr&oacute;nicos y m&aacute;s. Estas bases de datos est&aacute;n cuidadosamente seleccionadas para cubrir las &aacute;reas de conocimiento clave en nuestras especialidades de postgrado.</li>
+<li><strong>Cat&aacute;logo en L&iacute;nea:</strong> Nuestro cat&aacute;logo en l&iacute;nea te permite buscar y reservar libros f&iacute;sicos, revistas y otros materiales disponibles en nuestra biblioteca. Puedes realizar b&uacute;squedas por t&iacute;tulo, autor, tema o palabras clave para encontrar exactamente lo que necesitas.</li>
+<li><strong>Recursos Digitales:</strong> Accede a una vasta colecci&oacute;n de libros electr&oacute;nicos, tesis, disertaciones, y otros materiales digitales desde cualquier lugar y en cualquier momento. Nuestra biblioteca digital est&aacute; disponible las 24 horas del d&iacute;a, los 7 d&iacute;as de la semana.</li>
+<li><strong>Servicios de Referencia y Asistencia:</strong> Nuestro equipo de bibliotecarios est&aacute; aqu&iacute; para ayudarte. Ofrecemos servicios de referencia y asistencia personalizada para ayudarte a encontrar la informaci&oacute;n que necesitas y aprovechar al m&aacute;ximo nuestros recursos.</li>
+<li><strong>Pr&eacute;stamos Interbibliotecarios:</strong> Si no encontramos lo que buscas en nuestra colecci&oacute;n, podemos obtenerlo de otras bibliotecas a trav&eacute;s de nuestro servicio de pr&eacute;stamos interbibliotecarios.</li>
+<li><strong>Talleres y Capacitaci&oacute;n:</strong> Organizamos regularmente talleres y sesiones de capacitaci&oacute;n para ayudarte a mejorar tus habilidades de investigaci&oacute;n y el uso de herramientas bibliogr&aacute;ficas.</li>
+</ul>
+<h2>&iquest;C&oacute;mo acceder?</h2>
+<p>Acceder a nuestros recursos es f&aacute;cil. Solo necesitas tu identificaci&oacute;n de estudiante y tu contrase&ntilde;a para ingresar a la biblioteca virtual. Si eres nuevo en el uso de nuestras plataformas, ofrecemos gu&iacute;as y tutoriales para ayudarte a comenzar.</p>
+<h2>Cont&aacute;ctanos</h2>
+<p>Si tienes alguna pregunta o necesitas asistencia, no dudes en ponerte en contacto con nosotros. Puedes visitarnos en la biblioteca f&iacute;sica durante nuestros horarios de atenci&oacute;n, o enviarnos un correo electr&oacute;nico a <a href="mailto:biblioteca@gerens.pe">biblioteca@gerens.edu.pe</a>.</p>
+<h2>Horarios de Atenci&oacute;n</h2>
+<ul>
+<li><strong>Biblioteca F&iacute;sica:</strong><br />Lunes a Viernes: 9:00 AM - 6:00 PM<br />S&aacute;bados: 10:00 AM - 2:00 PM</li>
+<li><strong>Biblioteca Virtual:</strong><br />Acceso 24/7</li>
+</ul>
+<p>&iexcl;Estamos aqu&iacute; para apoyarte en tu camino acad&eacute;mico! Explora, descubre y aprende con la Biblioteca Virtual de la Escuela de Postgrado GĚRENS.</p>
+</div>
+</div>
+
+opacnavright
+https://cdn.pixabay.com/photo/2016/04/12/11/45/tree-1324177_1280.jpg
+ancho 200
+
+opacredit
+Implementado por GĚRENS @2024.
 
 
+
+
+
+
+
+
+
+
+
+***************************************
 
 *******************************
   /*Hide Coultar logo small*/
