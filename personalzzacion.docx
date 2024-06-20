@@ -4,6 +4,9 @@
   Quitar en <repos> ...quitar el restricted de 1 a 0
 
 **********
+
+opacusercsss 
+
 /*boton primario*/
 .btn-primary {
 	color: #ffffff;
